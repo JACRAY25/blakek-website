@@ -1,0 +1,13 @@
+body {
+    background: url('vintage-background.jpg'); 
+    color: #ddd;
+    font-family: 'Courier New', monospace;
+}
+#top-bar {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 10px;
+    text-align: center;
+}
