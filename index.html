@@ -4,9 +4,95 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blake K</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
 </head>
 <body>
-    <h1>Welcome to Blake K's Website</h1>
-    <p>This is the beginning of something awesome.</p>
+    <audio autoplay loop>
+        <source src="static_noise.mp3" type="audio/mpeg">
+        <source src="electronic_hum.mp3" type="audio/mpeg">
+    </audio>
+
+    <nav id="top-bar">
+        <span><a href="#about">Who is Blake K?</a></span>
+        <span><a href="#gallery">Pictures</a></span>
+        <span><a href="#quotes">Quotes</a></span>
+        <span><a href="#videos">Videos</a></span>
+    </nav>
+
+    <div id="container">
+        <header>
+            <h1 class="glitch-text">Blake K</h1>
+        </header>
+
+        <section id="about" class="scroll-effect">
+            <h2>Who is Blake K?</h2>
+            <p class="glitch-text">Mystery. Confusion. Wit. You think you know, but do you?</p>
+        </section>
+
+        <section id="gallery" class="scroll-effect">
+            <h2>Pictures</h2>
+            <div class="photo-frame">
+                <img src="your-image.jpg" alt="Blake K">
+            </div>
+        </section>
+
+        <section id="quotes" class="scroll-effect">
+            <h2>Quotes</h2>
+            <blockquote class="cryptic-quote">"Your clever quote here."</blockquote>
+        </section>
+
+        <section id="videos" class="scroll-effect">
+            <h2>Videos</h2>
+            <video controls>
+                <source src="your-video.mp4" type="video/mp4">
+            </video>
+        </section>
+
+        <div id="hidden-section-trigger">
+            <img src="old-frame.png" id="secret-photo" alt="Old Photo Frame">
+        </div>
+
+        <div id="hidden-section" style="display: none;">
+            <h2>Hidden Secrets</h2>
+            <p class="cryptic-message">Welcome to the hidden space.</p>
+        </div>
+    </div>
+
+    <div id="admin-section" style="display: none;">
+        <h2>Admin Panel</h2>
+        <p>Edit your content here.</p>
+        <input type="password" id="admin-password" placeholder="Enter Code">
+        <button onclick="checkAccess()">Enter</button>
+        <div id="admin-content" style="display: none;">
+            <textarea id="quote-editor" placeholder="Edit Quotes Here..."></textarea>
+            <button onclick="saveQuotes()">Save</button>
+        </div>
+    </div>
 </body>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        document.getElementById("secret-photo").addEventListener("click", function() {
+            document.getElementById("hidden-section").style.display = "block";
+        });
+
+        function checkAccess() {
+            let pass = document.getElementById("admin-password").value;
+            if (pass === "BlakeSecret123") { // Change this to something only you know
+                document.getElementById("admin-content").style.display = "block";
+            } else {
+                alert("Wrong password!");
+            }
+        }
+    });
+</script>
 </html>
